@@ -1,6 +1,12 @@
 <div class="canvas">
   <div class="poly bg-cyan-950"></div>
   <div class="poly bg-green-950"></div>
+  <div class="poly bg-red-950"></div>
+  <div class="poly bg-amber-200"></div>
+  <div class="poly bg-pink-700"></div>
+</div>
+<div class="canvas">
+  <div class="poly bg-cyan-950"></div>
 </div>
 <div class="canvas">
   <div class="frame bg-amber-950"></div>
@@ -17,8 +23,46 @@
 
 <style>
   .poly {
+    --width: 250px;
+    --slant-offest: 50px;
+
+    width: var(--width);
+    clip-path: polygon(
+      var(--slant-offest) 0%, 
+      100% 0%,
+      calc(100% - var(--slant-offest)) 100%,
+      0% 100%
+    );
+
+    margin-left: calc(-1 * var(--slant-offest));
+    transition: width .5s ease;
+
+    &:hover {
+      --width: 500px;
+      transition: width .2s ease;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .poly2 {
     width: 250px;
     clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    margin-left: -50px;
+    
+    transition: width .5s ease, margin-left .5s ease;
+    &:hover {
+      width: 500px;
+      /* clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); */
+      margin-left: -50px;
+      transition: width .2s ease, margin-left .5s ease;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
 
